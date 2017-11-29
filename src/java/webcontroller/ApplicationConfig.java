@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package webcontroller;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -29,7 +29,10 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(WebService.UserFacadeREST.class);
+        resources.add(wService.CommentFacadeREST.class);
+        resources.add(wService.LikesFacadeREST.class);
+        resources.add(wService.PostFacadeREST.class);
+        resources.add(wService.UserFacadeREST.class);
     }
     
 }

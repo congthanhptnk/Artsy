@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package WebService;
+package wService;
 
-import Query.User;
+import entities.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,17 +35,39 @@ public class UserFacadeREST extends AbstractFacade<User> {
     public UserFacadeREST() {
         super(User.class);
     }
-
+//Need further explanation
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("register")
-    public void register(@QueryParam("username") String userName, @QueryParam("password") String password) {
+    public boolean register(@QueryParam("username") String userName, @QueryParam("password") String password) {
+        boolean isOk = true;
         List<User> userList = em.createNamedQuery("User.findAll").getResultList();
         for(User user: userList){
             if(user.getUsername().equals(userName)){
-                
+                isOk = false;
             }
         }
+        if(isOk = false){
+            User newUser = new User();
+            newUser.setUsername(userName);
+            newUser.setPassword(password);
+        }
+        return isOk;
+    }
+    
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("login")
+    public boolean login(@QueryParam("username")String userName, @QueryParam("password")String password){
+        boolean isOk = false;
+        List<User> userList = em.createNamedQuery("User.findAll").getResultList();
+        for(User user: userList){
+            if(user.getUsername().equals(userName)&&user.getPassword().equals(password)){
+                isOk = true;
+            }
+            else isOk = false;
+        }
+        return isOk;
     }
 
     @PUT
@@ -64,7 +86,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public User find(@PathParam("id") Integer id) {
+    public User find(@PathParam("id") int id) {
         return super.find(id);
     }
 

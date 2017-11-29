@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Query;
+package entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -16,7 +16,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -24,22 +23,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author congthanhptnk
  */
 @Entity
-@Table(name = "Comment")
+@Table(name = "Likes")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Comment.findAll", query = "SELECT c FROM Comment c")
-    , @NamedQuery(name = "Comment.findByCid", query = "SELECT c FROM Comment c WHERE c.cid = :cid")
-    , @NamedQuery(name = "Comment.findById", query = "SELECT c FROM Comment c WHERE c.id = :id")
-    , @NamedQuery(name = "Comment.findByPid", query = "SELECT c FROM Comment c WHERE c.pid = :pid")
-    , @NamedQuery(name = "Comment.findByComment", query = "SELECT c FROM Comment c WHERE c.comment = :comment")})
-public class Comment implements Serializable {
+    @NamedQuery(name = "Likes.findAll", query = "SELECT l FROM Likes l")
+    , @NamedQuery(name = "Likes.findByLid", query = "SELECT l FROM Likes l WHERE l.lid = :lid")
+    , @NamedQuery(name = "Likes.findById", query = "SELECT l FROM Likes l WHERE l.id = :id")
+    , @NamedQuery(name = "Likes.findByPid", query = "SELECT l FROM Likes l WHERE l.pid = :pid")})
+public class Likes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "CID")
-    private Integer cid;
+    @Column(name = "LID")
+    private Integer lid;
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID")
@@ -48,32 +46,26 @@ public class Comment implements Serializable {
     @NotNull
     @Column(name = "PID")
     private int pid;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
-    @Column(name = "Comment")
-    private String comment;
 
-    public Comment() {
+    public Likes() {
     }
 
-    public Comment(Integer cid) {
-        this.cid = cid;
+    public Likes(Integer lid) {
+        this.lid = lid;
     }
 
-    public Comment(Integer cid, int id, int pid, String comment) {
-        this.cid = cid;
+    public Likes(Integer lid, int id, int pid) {
+        this.lid = lid;
         this.id = id;
         this.pid = pid;
-        this.comment = comment;
     }
 
-    public Integer getCid() {
-        return cid;
+    public Integer getLid() {
+        return lid;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setLid(Integer lid) {
+        this.lid = lid;
     }
 
     public int getId() {
@@ -92,29 +84,21 @@ public class Comment implements Serializable {
         this.pid = pid;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (cid != null ? cid.hashCode() : 0);
+        hash += (lid != null ? lid.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Comment)) {
+        if (!(object instanceof Likes)) {
             return false;
         }
-        Comment other = (Comment) object;
-        if ((this.cid == null && other.cid != null) || (this.cid != null && !this.cid.equals(other.cid))) {
+        Likes other = (Likes) object;
+        if ((this.lid == null && other.lid != null) || (this.lid != null && !this.lid.equals(other.lid))) {
             return false;
         }
         return true;
@@ -122,7 +106,7 @@ public class Comment implements Serializable {
 
     @Override
     public String toString() {
-        return "Query.Comment[ cid=" + cid + " ]";
+        return "Query.Likes[ lid=" + lid + " ]";
     }
     
 }
