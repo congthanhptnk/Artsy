@@ -18,6 +18,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -25,7 +26,7 @@ import javax.ws.rs.core.MediaType;
  * @author congthanhptnk
  */
 @Stateless
-@Path("entities.likes")
+@Path("likes")
 public class LikesFacadeREST extends AbstractFacade<Likes> {
 
     @PersistenceContext(unitName = "ArtsyPU")
@@ -36,10 +37,22 @@ public class LikesFacadeREST extends AbstractFacade<Likes> {
     }
 
     @POST
-    @Override
+    @Path("{pid}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Likes entity) {
-        super.create(entity);
+    public boolean addLike(@PathParam("pid")int pid, @PathParam("id")int id) {
+        List<Likes> checkLike = em.createNamedQuery("Likes.findAll").getResultList();
+        boolean isOk = true;
+        for(Likes aLike: checkLike){
+            if(aLike.getId() == id && aLike.getPid() == pid){
+                isOk = false;
+            }
+        }
+        if(isOk == true){
+            Likes newLike = new Likes();
+            newLike.setPid(pid);
+            newLike.setId(id);
+        }
+        return isOk;
     }
 
     @PUT
@@ -50,16 +63,18 @@ public class LikesFacadeREST extends AbstractFacade<Likes> {
     }
 
     @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+    @Path("{pid}")
+    public void removeLike(@PathParam("id")int id, @PathParam("pid")int pid, @QueryParam("lid")int lid) {
+        super.remove(super.find(lid));
     }
 
     @GET
-    @Path("{id}")
+    @Path("{pid}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Likes find(@PathParam("id") Integer id) {
-        return super.find(id);
+    public int countLike(@PathParam("pid")int pid) {
+        List<Likes> postLikes = em.createNamedQuery("Likes.findByPid").setParameter("pid", pid).getResultList();
+        int likes = postLikes.size();
+        return likes;
     }
 
     @GET

@@ -41,17 +41,13 @@ public class Comment implements Serializable {
     @Column(name = "CID")
     private Integer cid;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID")
     private int id;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "PID")
     private int pid;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
-    @Column(name = "Comment")
+    @Column(name = "Comment", length = 200)
     private String comment;
 
     public Comment() {

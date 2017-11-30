@@ -42,39 +42,34 @@ public class Post implements Serializable {
     @Column(name = "PID")
     private Integer pid;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "Picture")
+    @Column(name = "Picture", length = 100)
     private String picture;
-    @Size(max = 100)
-    @Column(name = "Title")
+    @Column(name = "Title", length=100)
     private String title;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID")
     private int id;
-    @Size(max = 100)
-    @Column(name = "Caption")
+    @Column(name = "Caption", length = 100)
     private String caption;
 
     public Post() {
     }
 
-    public Post(Integer pid) {
+    public Post(int pid) {
         this.pid = pid;
     }
 
-    public Post(Integer pid, String picture, int id) {
+    public Post(int pid, String picture, int id) {
         this.pid = pid;
         this.picture = picture;
         this.id = id;
     }
 
-    public Integer getPid() {
+    public int getPid() {
         return pid;
     }
 
-    public void setPid(Integer pid) {
+    public void setPid(int pid) {
         this.pid = pid;
     }
 

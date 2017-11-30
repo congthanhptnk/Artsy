@@ -18,6 +18,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -25,7 +26,7 @@ import javax.ws.rs.core.MediaType;
  * @author congthanhptnk
  */
 @Stateless
-@Path("entities.comment")
+@Path("comments")
 public class CommentFacadeREST extends AbstractFacade<Comment> {
 
     @PersistenceContext(unitName = "ArtsyPU")
@@ -36,10 +37,24 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
     }
 
     @POST
-    @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Comment entity) {
-        super.create(entity);
+    public boolean createComment(
+            @PathParam("PID")int pid, 
+            @PathParam("ID")int id, 
+            @QueryParam("Comment")String comment) {
+        boolean isOk =true;
+        if(comment.isEmpty()){
+            isOk = false;
+        }
+        else {
+            Comment myComment = new Comment();
+            myComment.setPid(pid);
+            myComment.setId(id);
+            myComment.setComment(comment);
+            
+        }
+        
+        return isOk;
     }
 
     @PUT
@@ -56,10 +71,11 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("{pid}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Comment find(@PathParam("id") Integer id) {
-        return super.find(id);
+    public List<Comment> findPicComment(@PathParam("PID")int pid) {
+        List<Comment> comments = em.createNamedQuery("Comment.findCommentbyPid").setParameter("PID", pid).getResultList();
+        return comments;
     }
 
     @GET

@@ -39,11 +39,9 @@ public class Likes implements Serializable {
     @Column(name = "LID")
     private Integer lid;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID")
     private int id;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "PID")
     private int pid;
 

@@ -47,7 +47,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
                 isOk = false;
             }
         }
-        if(isOk = false){
+        if(isOk == false){
             User newUser = new User();
             newUser.setUsername(userName);
             newUser.setPassword(password);

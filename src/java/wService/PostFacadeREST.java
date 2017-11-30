@@ -6,6 +6,7 @@
 package wService;
 
 import entities.Post;
+import entities.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,6 +19,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -38,8 +40,12 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     @POST
     @Path("addpost")
     @Consumes({MediaType.APPLICATION_JSON})
-    public boolean createPost(@PathParam("title")String title, @PathParam("caption")String caption,
-            @PathParam("picture")String picture, @PathParam("id")int id) {
+    public boolean createPost(
+            @PathParam("title")String title, 
+            @PathParam("caption")String caption,
+            @PathParam("picture")String picture, 
+            @PathParam("ID")int id) {
+        
         boolean isOk =false;
         if(!picture.isEmpty() && id!=0){
             isOk = true;
@@ -55,28 +61,16 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     }
 
     @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_JSON})
-    public boolean editPost(@PathParam("title")String title, @PathParam("caption")String caption,
-            @PathParam("picture")String picture, @PathParam("id")int id) {
-        boolean isOk;
-        Post post = super.find(id);
-        if(post == null){
-            isOk = false;
-        }
-        else {
-            post.setCaption(caption);
-            post.setPicture(picture);
-            post.setTitle(title);
-            isOk = true;
-        }
-        return isOk;
+    @Path("{pid}")
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public void editPost(@PathParam("PID")int pid, Post entity) {
+        super.edit(entity);
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("{pid}")
     @Produces({MediaType.APPLICATION_JSON})
-    public boolean removePost(@PathParam("id")int pid) {
+    public boolean removePost(@PathParam("PID")int pid) {
         boolean isOk = true;
         if(super.find(pid)==null){
             isOk = false;
@@ -86,17 +80,24 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("{pid}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Post find(@PathParam("id") Integer id) {
-        return super.find(id);
+    public Post findPost(@PathParam("PID") int pid) {
+        return super.find(pid);
     }
 
     @GET
-    @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Post> findAll() {
+    public List<Post> findAllPost() {
         return super.findAll();
+    }
+    
+    @GET
+    @Path("{id}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Post> findMyPost(@PathParam("ID")int id) {
+        List<Post> myPost = em.createNamedQuery("Post.findById").setParameter("ID", id).getResultList();
+        return myPost;
     }
 
     @GET
