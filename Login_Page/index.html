@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login_Page</title>
+    <link rel="stylesheet" href="css/login_page.css">
+</head>
+<body>
+    <div class="front-card">
+        <div class="front-welcome">
+            <div class="front-welcome-text">
+                <img src="img/img2.png" style="width: 300px;height: 100px;">
+            </div>
+            <div class="front-welcome-img">
+                <img src="img/img1.jpg" style="width: 300px;height: 300px;">
+            </div>
+        </div>
+
+        <div class="front-login">
+
+            <div class="front-signin">
+                <form action="/" class="t1-form" id="frontpage-singin-form" method="post">
+                    <div class="username field">
+                        <input type="text" id="signin-email" class="text-input" name="session[email]" placeholder="Email">
+                    </div>
+                    <table class="flex-table">
+                        <tbody>
+                        <tr>
+                            <td class="flex-table-primary">
+                                <div class="password flex-table-form">
+                                    <input type="password" id="signin-password" class="text-input flex-table-input "
+                                           name="session[password]" placeholder="Password">
+                                </div>
+                            </td>
+                            <td class="flex-table-secondary">
+                                <button type="submit" class="SubmitButton flex-table-btn">Log in</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            <div class="front-signup">
+                <h2>
+                    <strong>New to Artsy?</strong>
+                    Sign up
+                </h2>
+                <form action="/" class=" t1-form" id="frontpage-signup-form" method="post">
+                    <div class="field">
+                        <input type="text" class="text-input" autocomplete="off" name="user[name]" maxlength="" placeholder="Full name">
+                    </div>
+                    <div class="field">
+                        <input type="text" class="text-input email-input" autocomplete="off" name="user[email]" placeholder="Email">
+                    </div>
+                    <div class="field">
+                        <input type="password" class="text-input" name="user[user_password]" placeholder="Password">
+                    </div>
+                    <button type="submit" class="SubmitButton Sign-up-btn u-floatRight ">Sign up for Artsy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/main.js"></script>
+</body>
+</html>
