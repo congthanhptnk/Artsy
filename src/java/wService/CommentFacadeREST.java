@@ -37,11 +37,13 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
     }
 
     @POST
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Path("{userid}/{postid}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public boolean createComment(
-            @PathParam("PID")int pid, 
-            @PathParam("ID")int id, 
-            @QueryParam("Comment")String comment) {
+            @PathParam("postid")int pid, 
+            @PathParam("userid")int id, 
+            @QueryParam("comment")String comment) {
         boolean isOk =true;
         if(comment.isEmpty()){
             isOk = false;
@@ -51,52 +53,31 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
             myComment.setPid(pid);
             myComment.setId(id);
             myComment.setComment(comment);
-            
+            super.create(myComment);
         }
         
         return isOk;
     }
 
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Comment entity) {
-        super.edit(entity);
-    }
-
     @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+    @Path("{userid}/{commentid}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public boolean removeComment(@PathParam("commentid")int cid, @PathParam("userid")int id) {
+        boolean isOk = false;
+        Comment oldComment = super.find(cid);
+        if(oldComment.getId() == id){
+            super.remove(super.find(id));
+            isOk = true;
+        }
+        return isOk;
     }
 
     @GET
-    @Path("{pid}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Comment> findPicComment(@PathParam("PID")int pid) {
+    @Path("{userid}/{postid}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<Comment> findPicComment(@PathParam("postid")int pid) {
         List<Comment> comments = em.createNamedQuery("Comment.findCommentbyPid").setParameter("PID", pid).getResultList();
         return comments;
-    }
-
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Comment> findAll() {
-        return super.findAll();
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Comment> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
     }
 
     @Override

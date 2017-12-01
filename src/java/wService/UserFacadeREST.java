@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -35,82 +36,63 @@ public class UserFacadeREST extends AbstractFacade<User> {
     public UserFacadeREST() {
         super(User.class);
     }
-//Need further explanation
+
     @POST
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Path("register")
-    public boolean register(@QueryParam("username") String userName, @QueryParam("password") String password) {
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("registration")
+    public boolean register(@FormParam("username") String userName, @FormParam("password") String password) {
         boolean isOk = true;
         List<User> userList = em.createNamedQuery("User.findAll").getResultList();
         for(User user: userList){
-            if(user.getUsername().equals(userName)){
+                if(user.getUsername().equals(userName)){
                 isOk = false;
             }
         }
-        if(isOk == false){
+        if(isOk == true){
             User newUser = new User();
             newUser.setUsername(userName);
             newUser.setPassword(password);
+            super.create(newUser);
         }
         return isOk;
     }
     
     @POST
-    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     @Path("login")
-    public boolean login(@QueryParam("username")String userName, @QueryParam("password")String password){
-        boolean isOk = false;
+    public String login(@FormParam("username")String userName, @FormParam("password")String password){
+        String isOk = "true";
         List<User> userList = em.createNamedQuery("User.findAll").getResultList();
-        for(User user: userList){
-            if(user.getUsername().equals(userName)&&user.getPassword().equals(password)){
-                isOk = true;
+        for(User user: userList){            
+            if(user.getUsername().equals(userName) && user.getPassword().equals(password)){
+                isOk = "true";           
             }
-            else isOk = false;
+            else isOk = "false";
+            
         }
         return isOk;
     }
 
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, User entity) {
-        super.edit(entity);
-    }
-
     @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
+    @Path("{userid}")
+    public void remove(@PathParam("userid")int id) {
         super.remove(super.find(id));
     }
 
     @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public User find(@PathParam("id") int id) {
-        return super.find(id);
+    @Path("profile")
+    @Produces({MediaType.APPLICATION_JSON})
+    public User findMe(@QueryParam("username") String username) {
+        List<User> allUser = em.createNamedQuery("User.findAll").getResultList();
+        User user = null;
+        for(User aUser: allUser){
+           if(aUser.getUsername().equals(username)){
+               user = aUser;
+           }
+        }
+        return user;
     }
-
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<User> findAll() {
-        return super.findAll();
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<User> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
-    }
-
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;

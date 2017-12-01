@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -37,9 +38,9 @@ public class LikesFacadeREST extends AbstractFacade<Likes> {
     }
 
     @POST
-    @Path("{pid}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public boolean addLike(@PathParam("pid")int pid, @PathParam("id")int id) {
+    @Path("{userid}/{postid}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public boolean addLike(@PathParam("postid")int pid, @PathParam("userid")int id) {
         List<Likes> checkLike = em.createNamedQuery("Likes.findAll").getResultList();
         boolean isOk = true;
         for(Likes aLike: checkLike){
@@ -51,27 +52,24 @@ public class LikesFacadeREST extends AbstractFacade<Likes> {
             Likes newLike = new Likes();
             newLike.setPid(pid);
             newLike.setId(id);
+            super.create(newLike);
         }
         return isOk;
     }
 
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Likes entity) {
-        super.edit(entity);
-    }
-
     @DELETE
-    @Path("{pid}")
-    public void removeLike(@PathParam("id")int id, @PathParam("pid")int pid, @QueryParam("lid")int lid) {
-        super.remove(super.find(lid));
+    @Path("{userid}/{postid}")
+    public void removeLike(@PathParam("userid")int id, @PathParam("postid")int pid, @QueryParam("likeid")int lid) {
+        Likes thisLike = super.find(lid);
+        if(thisLike.getId() == id){
+            super.remove(super.find(lid));
+        }
     }
 
     @GET
-    @Path("{pid}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public int countLike(@PathParam("pid")int pid) {
+    @Path("{postid}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public int countLike(@PathParam("postid")int pid) {
         List<Likes> postLikes = em.createNamedQuery("Likes.findByPid").setParameter("pid", pid).getResultList();
         int likes = postLikes.size();
         return likes;
@@ -82,20 +80,6 @@ public class LikesFacadeREST extends AbstractFacade<Likes> {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Likes> findAll() {
         return super.findAll();
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Likes> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
     }
 
     @Override
