@@ -4,9 +4,7 @@ document.addEventListener('click', function (e) {
     e.preventDefault();
 
     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
-        console.log('are you here man?')
         if (target.hasAttribute('data-target')) {
-            console.log('are you there?');
             console.log(m_ID)
             var m_ID = target.getAttribute('data-target');
             document.getElementById(m_ID).classList.add('open');
