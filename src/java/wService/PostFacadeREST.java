@@ -42,33 +42,26 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     @POST
     @Path("{userid}/newpost")
     @Produces({MediaType.APPLICATION_JSON})
-    public boolean createPost(
-            @FormParam("title")String title, 
-            @FormParam("caption")String caption,
-            @FormParam("picture")String picture, 
-            @PathParam("userid")int id) {
+    public Post createPost(
+            String title, 
+            String caption,
+            String picture, 
+            int id) {
         
-        boolean isOk;
-        if(picture.isEmpty() || id==0){
-            isOk = false;
+        Post newPost;
+        if(picture.isEmpty() || title.isEmpty()){
+            newPost = em.find(Post.class, 1);
         }
         else{
-            Post newPost = new Post();
+            newPost = new Post();
             newPost.setCaption(caption);
             newPost.setPicture(picture);
             newPost.setTitle(title);
             newPost.setId(id);
             super.create(newPost);
-            isOk = true;
         }
-        return isOk;
-    }
-
-    @PUT
-    @Path("{postid}")
-    @Consumes({MediaType.APPLICATION_JSON})
-    public void editPost(@PathParam("postid")int pid, Post entity) {
-        super.edit(entity);
+        return newPost;
+        
     }
 
     @DELETE

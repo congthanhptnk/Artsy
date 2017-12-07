@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -38,12 +39,11 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
 
     @POST
     @Path("{userid}/{postid}")
-    @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     public boolean createComment(
             @PathParam("postid")int pid, 
             @PathParam("userid")int id, 
-            @QueryParam("comment")String comment) {
+            @FormParam("comment")String comment) {
         boolean isOk =true;
         if(comment.isEmpty()){
             isOk = false;
@@ -66,7 +66,7 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
         boolean isOk = false;
         Comment oldComment = super.find(cid);
         if(oldComment.getId() == id){
-            super.remove(super.find(id));
+            super.remove(super.find(id)); 
             isOk = true;
         }
         return isOk;
