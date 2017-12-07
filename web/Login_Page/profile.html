@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main Page</title>
+    <title>Profile Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main_page.css">
 </head>
 <body>
-    <section class="main-section">
-
+    <section class="main-section">Profile
 
         <nav class="nav-bar" role="navigation">
             <div class="nav-bar-content">
@@ -30,7 +29,6 @@
             </div>
         </nav>
 
-
         <main class="main-card">
 
             <section class="main-feed" id="main-feed">
@@ -39,7 +37,8 @@
                         <div class="_havey" style="padding-top: 0px; padding-bottom: 5600px">
                             <article class="card">
                                 <div class="picture">
-                                    <img src="./img/img1.jpg" style="width: 500px;height: 500px;" alt="gmat" data-toggle="modal" data-target="gmat">
+                                    <img src="./img/img1.jpg" style="width: 500px;height: 500px;" alt="gmat">
+                                    <button class="btn" data-toggle="modal" data-target="gmat">REVIEW</button>
                                 </div>
                             </article>
                             <article class="card">
@@ -55,7 +54,7 @@
                             </article>
                             <article class="card">
                                 <div class="picture">
-                                    <img src="img/img3.jpg" style="width: 500px;height: 500px;" alt="gmat" data-toggle="modal" data-target="gmat">
+                                    <img src="img/img3.jpg" style="width: 500px;height: 500px;">
                                 </div>
                             </article>
                             <article class="card">
@@ -86,7 +85,7 @@
                                     <strong>Share your drawing here</strong>
                                 </h2>
                                 <form action="/" class=" t1-form" id="upload-form" method="post" enctype="multipart/form-data">
-                                     <input type="file" name="fileup" accept="image/*">
+                                    <input type="file" name="fileup" accept="image/*">
                                     <div class="field">
                                         <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Title">
                                     </div>
@@ -101,72 +100,6 @@
                 </div>
             </section>
         </main>
-
-
-        <div class="modalreview">
-
-            <div class="modal" id="gmat">
-                <div class="modal-window">
-
-
-                    <div class="reviewpost">
-                        <img src="./img/img1.jpg" alt="gmat" style="flow: center">
-                        <p>Caption: <br>by Dat Viri</p>
-                    </div>
-
-                    <div class="writecomment">
-                        <h2>Add a Comment</h2>
-                        <table class="flex-table">
-                            <tbody>
-                            <tr>
-                                <td class="flex-table-primary">
-                                    <div class="showcomment flex-table-form">
-                                        <input type="text" name="newcomment" placeholder=" ">
-                                    </div>
-                                </td>
-                                <td class="flex-table-secondary">
-                                    <button type="submit" class="SubmitButton flex-table-btn">Send</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <div class="sharecomment">
-                        <div class="listcomment">
-                            <div class="comment">
-                                <div class="sideinfo">
-                                    <h4>Username</h4>
-                                </div>
-                                <div class="showcomment">
-                                    <p>This is useful post. Thank you</p>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <div class="sideinfo">
-                                    <h4>name name</h4>
-                                </div>
-                                <div class="showcomment">
-                                    <p>I will buy this book. Thank you</p>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <div class="sideinfo">
-                                    <h4>zebra</h4>
-                                </div>
-                                <div class="showcomment">
-                                    <p>I will have exam next month. I hope I could have high grade like yours. This book is really helpful for me</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="modal__close" data-dismiss="modal">&#10005;</button>
-                </div>
-
-            </div>
-        </div>
     </section>
-
-    <script type="text/javascript" src="./js/modal_review.js"></script>
 </body>
 </html>

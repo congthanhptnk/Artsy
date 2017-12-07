@@ -200,3 +200,133 @@ h2{
     margin: 0;
     padding: 6px 16px;
 }
+
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+    overflow: auto;
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+.modal-window {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 50%;
+    margin: 10% auto;
+    padding: 20px;
+}
+.modal__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 24px;
+    color: #747474;
+    font-weight: bold;
+}
+.modal__close:hover {
+    color: #000;
+}
+.open {
+    display: block;
+}
+
+.modalreview{
+    padding: 20px;
+
+}
+.reviewpost img{
+    height:300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right:auto;
+}
+.showcomment{
+    border: 1px solid #ccc!important;
+    border-radius: 5px;
+    width: 100%;
+}
+.writecomment h2{
+    line-height: 22px;
+    text-align: left;
+}
+.writecomment input{
+    font-size: 15px;
+    padding: 10px 0;
+    border:none;
+    width:100%;
+}
+
+.listcomment{
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.flex-table{
+    width: 100%;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+}
+
+tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+td,th{
+    display: table-cell;
+    padding: 0;
+}
+
+.flex-table-primary, .flex-table-secondary{
+    vertical-align: top;
+}
+
+.flex-table-primary{
+    width: 99%;
+    padding-right: 5px;
+}
+
+.flex-table-input{
+    width: 100%;
+}
+
+.flex-table-secondary{
+    width: 1%;
+    max-width: 1%;
+}
+
+.flex-table-form{
+    float: left;
+}
+
+.flex-table-btn{
+    float: right;
+    width:70px;
+    height:31px;
+    margin: 0;
+    background-color: transparent;
+    color: black;
+
+}
