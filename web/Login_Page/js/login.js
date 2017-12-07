@@ -4,7 +4,11 @@ if (localStorage.getItem("isOk") == true) {
     window.location.href = "main_page.html";
 }
 
+<<<<<<< HEAD
 const endPointUrl ="http://10.114.34.13/Artsy/"
+=======
+const endPointUrl ="http://Localhost:63342/Login_Page/index.html/"
+>>>>>>> parent of 1155122... Merge
 const loginButton = document.querySelector('#buttonLogin');
 const signUpButton = document.querySelector('#buttonRegister');
 
