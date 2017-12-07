@@ -4,7 +4,7 @@ if (localStorage.getItem("isOk") == true) {
     window.location.href = "main_page.html";
 }
 
-const endPointUrl ="http://Localhost:63342/Login_Page/index.html/"
+const endPointUrl ="http://10.114.34.13/Login_Page/index.html/"
 const loginButton = document.querySelector('#buttonLogin');
 
 
