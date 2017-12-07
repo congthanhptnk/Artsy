@@ -1,0 +1,332 @@
+.main-section{
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.nav-bar{
+    background-color: white;
+    padding: 0;
+    order: 0;
+}
+
+nav,div,main,section,article{
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    border: 0 solid black;
+    box-sizing: border-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+    font:inherit;
+    vertical-align: baseline;
+}
+
+.nav-bar-content{
+    background-color: white;
+    border-bottom: 1px solid transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    height: 77px;
+    -webkit-box-align: center;
+    align-items: center;
+
+}
+
+.nav-bar-item{
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    height: 77px;
+    -webkit-box-pack: center;
+    max-width: 1010px;
+    padding:26px 40px;
+    width: 100%;
+    align-items: center;
+}
+
+.logo{
+    -webkit-box-flex: 1;
+    flex:1 9999 0%;
+    min-width: 40px;
+}
+
+.icon{
+    align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-box-flex: 1;
+    flex: 1 0 0%;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+}
+
+.profile-icon{
+    margin-left: 30px;
+
+}
+
+.main-card{
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    -webkit-box-ordinal-group: 5;
+    order: 4;
+    background-color: white;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.main-feed{
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    margin: 0 auto;
+    max-width: 600px;
+    position: relative;
+    width: 100%;
+    padding-top: 60px;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-flow:row nowrap;
+    max-width: 935px;
+}
+
+._havey{
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+}
+
+.card{
+    padding: 0;
+    padding-bottom: 30px
+}
+
+.picture{
+    border: 1px solid black;
+}
+
+.upload-card{
+    display: flex;
+    height: 100vh;
+    margin-bottom: 30px;
+    max-width: 293px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top:60px;
+    width: 100%;
+}
+
+.user-box{
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    height: 62px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.separate{
+    border: none;
+    border-top: 1px solid grey;
+    height: 1px;
+    margin:0 0 12px;
+    padding:0;
+    width: 100%;
+}
+
+hr{
+    display: block;
+    unicode-bidi: isolate;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+    -webkit-margin-start: auto;
+    -webkit-margin-end: auto;
+    overflow: hidden;
+}
+
+.upload-box{
+    height: 250px;
+}
+
+.upload-box-fix{
+    padding-top: 0;
+    padding-bottom: 4284px;
+}
+
+.t1-form{
+    margin:12px 12px 6px;
+}
+
+h2{
+    line-height: 22px;
+    text-align: center;
+}
+
+.text-input{
+    width: 266px;
+    height: 30px;
+    padding-top: 10px;
+}
+
+.SubmitButton{
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.Sign-up-btn{
+    background-color: transparent;
+    color: black;
+    overflow: visible;
+    margin: 0;
+    padding: 6px 16px;
+}
+
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+    overflow: auto;
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+.modal-window {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 50%;
+    margin: 10% auto;
+    padding: 20px;
+}
+.modal__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 24px;
+    color: #747474;
+    font-weight: bold;
+}
+.modal__close:hover {
+    color: #000;
+}
+.open {
+    display: block;
+}
+
+.modalreview{
+    padding: 20px;
+
+}
+.reviewpost img{
+    height:300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right:auto;
+}
+.showcomment{
+    border: 1px solid #ccc!important;
+    border-radius: 5px;
+    width: 100%;
+}
+.writecomment h2{
+    line-height: 22px;
+    text-align: left;
+}
+.writecomment input{
+    font-size: 15px;
+    padding: 10px 0;
+    border:none;
+    width:100%;
+}
+
+.listcomment{
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.flex-table{
+    width: 100%;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+}
+
+tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+td,th{
+    display: table-cell;
+    padding: 0;
+}
+
+.flex-table-primary, .flex-table-secondary{
+    vertical-align: top;
+}
+
+.flex-table-primary{
+    width: 99%;
+    padding-right: 5px;
+}
+
+.flex-table-input{
+    width: 100%;
+}
+
+.flex-table-secondary{
+    width: 1%;
+    max-width: 1%;
+}
+
+.flex-table-form{
+    float: left;
+}
+
+.flex-table-btn{
+    float: right;
+    width:70px;
+    height:31px;
+    margin: 0;
+    background-color: transparent;
+    color: black;
+
+}

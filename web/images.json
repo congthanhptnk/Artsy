@@ -1,0 +1,20 @@
+[
+  {
+    "mediaID": "71",
+    "mediaTitle": "Picture 1",
+    "mediaType": "image\/jpg",
+    "mediaOwner": "2",
+    "mediaAlbum": "16",
+    "mediaDate": "2016-11-16 22:47:25",
+    "mediaUrl": "img1.jpg"
+  },
+  {
+    "mediaID": "72",
+    "mediaTitle": "Picture 2",
+    "mediaType": "image\/jpg",
+    "mediaOwner": "2",
+    "mediaAlbum": "16",
+    "mediaDate": "2016-11-16 22:47:48",
+    "mediaUrl": "img3.jpg"
+  }
+]
