@@ -40,8 +40,9 @@ public class UserFacadeREST extends AbstractFacade<User> {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Path("registration")
-    public boolean register(@FormParam("username") String userName, @FormParam("password") String password) {
+    public User register(@FormParam("username") String userName, @FormParam("password") String password) {
         boolean isOk = true;
+        User newUser =null;
         List<User> userList = em.createNamedQuery("User.findAll").getResultList();
         for(User user: userList){
                 if(user.getUsername().equals(userName)){
@@ -49,28 +50,34 @@ public class UserFacadeREST extends AbstractFacade<User> {
             }
         }
         if(isOk == true){
-            User newUser = new User();
+            newUser = new User();
             newUser.setUsername(userName);
             newUser.setPassword(password);
             super.create(newUser);
         }
-        return isOk;
+        else if(isOk == false){
+            newUser = em.find(User.class, 10);
+        }
+        return newUser;
     }
     
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Path("login")
-    public String login(@FormParam("username")String userName, @FormParam("password")String password){
-        String isOk = "true";
+    public User login(@FormParam("username")String userName, @FormParam("password")String password){
+        boolean isOk=false;
+        User myUser = null;
         List<User> userList = em.createNamedQuery("User.findAll").getResultList();
         for(User user: userList){            
             if(user.getUsername().equals(userName) && user.getPassword().equals(password)){
-                isOk = "true";           
+                isOk = true;
+                myUser = user;
             }
-            else isOk = "false";
-            
         }
-        return isOk;
+        if(isOk == false){
+            myUser = em.find(User.class, 10);
+        }
+        return myUser;
     }
 
     @DELETE

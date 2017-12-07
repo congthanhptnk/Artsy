@@ -40,7 +40,7 @@ public class LikesFacadeREST extends AbstractFacade<Likes> {
     @POST
     @Path("{userid}/{postid}")
     @Consumes({MediaType.APPLICATION_JSON})
-    public boolean addLike(@PathParam("postid")int pid, @PathParam("userid")int id) {
+    public boolean addLike(@PathParam("postid")int pid, @HeaderParam("userid")int id) {
         List<Likes> checkLike = em.createNamedQuery("Likes.findAll").getResultList();
         boolean isOk = true;
         for(Likes aLike: checkLike){
@@ -59,7 +59,9 @@ public class LikesFacadeREST extends AbstractFacade<Likes> {
 
     @DELETE
     @Path("{userid}/{postid}")
-    public void removeLike(@PathParam("userid")int id, @PathParam("postid")int pid, @QueryParam("likeid")int lid) {
+    public void removeLike(@HeaderParam("userid")int id, 
+            @PathParam("postid")int pid, 
+            @QueryParam("likeid")int lid) {
         Likes thisLike = super.find(lid);
         if(thisLike.getId() == id){
             super.remove(super.find(lid));
@@ -67,19 +69,12 @@ public class LikesFacadeREST extends AbstractFacade<Likes> {
     }
 
     @GET
-    @Path("{postid}")
+    @Path("{userid}/{postid}")
     @Produces({MediaType.APPLICATION_JSON})
     public int countLike(@PathParam("postid")int pid) {
         List<Likes> postLikes = em.createNamedQuery("Likes.findByPid").setParameter("pid", pid).getResultList();
         int likes = postLikes.size();
         return likes;
-    }
-
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Likes> findAll() {
-        return super.findAll();
     }
 
     @Override
