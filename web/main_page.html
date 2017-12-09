@@ -1,173 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main_page.css">
+  <meta charset="UTF-8">
+  <title>Main Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/main_page.css">
 </head>
+
 <body>
-    <section class="main-section">
+  <nav class="nav-bar" role="navigation">
+    <div class="logo">
+      <img src="img/img2.png" style="width: 300px;height: 60px;">
+    </div>
+    <div class="icon">
+      <div class="home-icon">
+        <img src="img/img4.png" style="width: 30px;height: 30px;">
+      </div>
+      <div class="profile-icon">
+        <img src="img/img5.png" style="width: 30px;height: 30px;">
+      </div>
+      <div id="buttonLogOut" class="logout-icon">
+        <img src="img/img5.png" style="width: 30px;height: 30px;" >
+      </div>
+    </div>
+  </nav>
 
-
-        <nav class="nav-bar" role="navigation">
-            <div class="nav-bar-content">
-                <div class="nav-bar-item">
-                    <div class="logo">
-                        <img src="img/img2.png" style="width: 300px;height: 60px;">
-                    </div>
-
-                    <div class="icon">
-                        <div class="home-icon" >
-                            <img src="img/img4.png" style="width: 30px;height: 30px;" >
-                        </div>
-                        <div class="profile-icon">
-                            <img src="img/img5.png" style="width: 30px;height: 30px;">
-                        </div>
-                    </div>
-                </div>
-                <hr class="separate">
-            </div>
-        </nav>
-
-
-        <main class="main-card">
-
-            <section class="main-feed" id="main-feed">
-                <div class="content-card">
-                    <div>
-                        <div class="_havey" style="padding-top: 0px; padding-bottom: 5600px">
-                            <article class="card">
-                                <div class="picture">
-                                    <img src="./img/img1.jpg" style="width: 500px;height: 500px;" alt="gmat" data-toggle="modal" data-target="gmat">
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="picture">
-                                    <img src="img/img1.jpg" style="width: 500px;height: 500px;" alt="gmat">
-                                    <button class="btn" data-toggle="modal" data-target="gmat">REVIEW</button>
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="picture">
-                                    <img src="img/img3.jpg" style="width: 500px;height: 500px;">
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="picture">
-                                    <img src="img/img3.jpg" style="width: 500px;height: 500px;" alt="gmat" data-toggle="modal" data-target="gmat">
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="picture">
-                                    <img src="img/img1.jpg" style="width: 500px;height: 500px;">
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="upload-card">
-                    <div style="position: fixed">
-                        <div class="user-box t1-form">
-                            <div class="user-name">
-                                <div class="nick-name">
-                                    <a>Dat Viri</a>
-                                </div>
-                                <div class="true-name">
-                                    <a>Truong Huu Dat</a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr style="margin:12px 12px 6px;">
-                        <div class="upload-box">
-                            <div class="_havey upload-box-fix">
-                                <h2>
-                                    <strong>Share your drawing here</strong>
-                                </h2>
-                                <form action="/" class=" t1-form" id="upload-form" method="post" enctype="multipart/form-data">
-                                     <input type="file" name="fileup" accept="image/*">
-                                    <div class="field">
-                                        <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Title">
-                                    </div>
-                                    <div class="field">
-                                        <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Caption">
-                                    </div>
-                                    <button type="submit" class="SubmitButton Sign-up-btn " value="upload">Upload</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-
-        <div class="modalreview">
-
-            <div class="modal" id="gmat">
-                <div class="modal-window">
-
-
-                    <div class="reviewpost">
-                        <img src="./img/img1.jpg" alt="gmat" style="flow: center">
-                        <img id="likebtn" src="img/like_icon.png" style="width: 30px;height: 30px;">
-                        <p>Caption: <br>by Dat Viri <br> 123 </p>
-                    </div>
-
-                    <div class="writecomment">
-                        <h2>Add a Comment</h2>
-                        <table class="flex-table">
-                            <tbody>
-                            <tr>
-                                <td class="flex-table-primary">
-                                    <div class="showcomment flex-table-form">
-                                        <input type="text" name="newcomment" placeholder=" ">
-                                    </div>
-                                </td>
-                                <td class="flex-table-secondary">
-                                    <button type="submit" class="SubmitButton flex-table-btn">Send</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <div class="sharecomment">
-                        <div class="listcomment">
-                            <div class="comment">
-                                <div class="sideinfo">
-                                    <h4>Username</h4>
-                                </div>
-                                <div class="showcomment">
-                                    <p>Your picture is so good</p>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <div class="sideinfo">
-                                    <h4>abc</h4>
-                                </div>
-                                <div class="showcomment">
-                                    <p>Great job man</p>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <div class="sideinfo">
-                                    <h4>zd</h4>
-                                </div>
-                                <div class="showcomment">
-                                    <p>Best</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="modal__close" data-dismiss="modal">&#10005;</button>
-                </div>
-
-            </div>
+  <main class="main-section">
+    <section class="main-feed" id="main-feed">
+      <article class="card">
+        <div class="picture">
+          <img src="./img/img1.jpg" alt="gmat" data-toggle="modal" data-target="gmat">
         </div>
+      </article>
+      <article class="card">
+        <div class="picture">
+          <img src="img/img1.jpg" alt="gmat">
+        </div>
+      </article>
     </section>
 
-    <script type="text/javascript" src="./js/modal_review.js"></script>
+
+    <aside>
+      <section class="upload-card">
+        <header>
+          <h2>Dat viri</h2>
+          <h3>Share your drawing here</h3>
+        </header>
+
+        <form action="/" class=" t1-form" id="upload-form" method="post" enctype="multipart/form-data">
+          <div class="field">
+            <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Title">
+          </div>
+          <div class="field">
+            <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Caption">
+          </div>
+          <input type="file" name="fileup" accept="image/*">
+          <button type="submit" class="SubmitButton Sign-up-btn " value="upload">Upload</button>
+        </form>
+      </section>
+      <footer>
+        <p>&copy 2017 Artsy</p>
+      </footer>
+    </aside>
+
+    <!-- <section class="upload-card">
+      <div style="position: fixed">
+        <div class="user-box t1-form">
+          <div class="user-name">
+            <div class="nick-name">
+              <a>Dat Viri</a>
+            </div>
+            <div class="true-name">
+              <a>Truong Huu Dat</a>
+            </div>
+          </div>
+        </div>
+        <hr style="margin:12px 12px 6px;">
+        <div class="upload-box">
+          <div class="_havey upload-box-fix">
+            <h2><strong>Share your drawing here</strong></h2>
+            <form action="/" class=" t1-form" id="upload-form" method="post" enctype="multipart/form-data">
+              <input type="file" name="fileup" accept="image/*">
+              <div class="field">
+                <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Title">
+              </div>
+              <div class="field">
+                <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Caption">
+              </div>
+              <button type="submit" class="SubmitButton Sign-up-btn " value="upload">Upload</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  </main>
+
+
+
+
+  <!-- ---------------------------------
+                Modal
+ --------------------------------------->
+
+  <div class="modalreview">
+
+    <div class="modal" id="gmat">
+      <div class="modal-window">
+
+
+        <div class="reviewpost">
+          <img src="./img/img1.jpg" alt="gmat" style="flow: center">
+          <img id="likebtn" src="img/like_icon.png" style="width: 30px;height: 30px;">
+          <p>Caption: <br>by Dat Viri <br> 123 </p>
+        </div>
+
+        <div class="writecomment">
+          <h2>Add a Comment</h2>
+          <table class="flex-table">
+            <tbody>
+              <tr>
+                <td class="flex-table-primary">
+                  <div class="showcomment flex-table-form">
+                    <input type="text" name="newcomment" placeholder=" ">
+                  </div>
+                </td>
+                <td class="flex-table-secondary">
+                  <button type="submit" class="SubmitButton flex-table-btn">Send</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div class="sharecomment">
+          <div class="listcomment">
+            <div class="comment">
+              <div class="sideinfo">
+                <h4>Username</h4>
+              </div>
+              <div class="showcomment">
+                <p>Your picture is so good</p>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="sideinfo">
+                <h4>abc</h4>
+              </div>
+              <div class="showcomment">
+                <p>Great job man</p>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="sideinfo">
+                <h4>zd</h4>
+              </div>
+              <div class="showcomment">
+                <p>Best</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="modal__close" data-dismiss="modal">&#10005;</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="./js/main.js"></script>
+  <script type="text/javascript" src="./js/modal_review.js"></script>
 </body>
+
 </html>

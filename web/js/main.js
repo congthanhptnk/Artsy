@@ -1,37 +1,12 @@
-const showImages = () => {
-    const article = document.querySelector('article');
+"user strict"
 
-    fetch('images.json').then((response) => {
-        return response.json();
-}).then((json) => {
-        let html = '';
-    json.forEach((image) => {
-        html +=
-        `<div>
-          <figure>
-            <a href="#" onclick="openModal('img/${image.mediaUrl}')"></a>
-            <figcaption>
-                <h3>${image.mediaTitle}</h3>
-            </figcaption>
-          </figure>
-        </div>`;
+
+const logOutButton = document.querySelector('#buttonLogOut');
+
+logOutButton.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    console.log('log out clicked');
+    localStorage.removeItem("userID");
+    window.location.href = "index.html";
+
 });
-    article.innerHTML = article;
-});
-};
-
-showImages();
-
-var myModal = document.getElementById("myModal");
-
-const openModal = (url) => {
-    console.log(url)
-    myModal.style.display = "block";
-    var modalImg = document.getElementById("img");
-    modalImg.src = url;
-};
-
-var span = document.getElementsByClassName("closeBtn")[0];
-span.onclick = function() {
-    myModal.style.display = "none";
-}

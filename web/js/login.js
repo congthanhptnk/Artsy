@@ -1,62 +1,66 @@
 "user strict"
 
-if (localStorage.getItem("isOk") == true) {
-    window.location.href = "main_page.html";
-}
-
-const endPointUrl ="http://10.114.34.13/Artsy/"
+const endPointUrl ="http://10.114.34.13:8080/Artsy/webresources/"
 const loginButton = document.querySelector('#buttonLogin');
 const signUpButton = document.querySelector('#buttonRegister');
 
 //Login
 loginButton.addEventListener('click', (evt) => {
     evt.preventDefault();
+    console.log('signin');
     const userName = document.querySelector('#signin-username').value;
     const password = document.querySelector('#signin-password').value;
-
-    const url = endPointUrl + `webresources/users/login?username=${userName}&&password=${password}`;
+    console.log(userName);
+    console.log(password);
+    const url = endPointUrl + `users/login?username=${userName}&&password=${password}`;
 
     fetch(url, {
         method: 'POST'
     })
         .then(json)
-        .then((data) => {
-            if (data.hasOwnProperty('error')) {
-                alert(data.error);
-            } else {
-                localStorage.setItem("isOk", true);
-                window.location.href = "main_page.html";
+        .then((data) =>{
+            console.log(data);
+            if(data.username==='ERROR'){
+                alert('Wrong username or password')
             }
-        }).catch((error) => {
-        console.log('error: ' + error);
-    });
+            else{
+                localStorage.setItem('userID',data.id);
+                window.location.href ="main_page.html";
+            }
+
+        });
 });
 
 //Register
 signUpButton.addEventListener('click', (evt) => {
     evt.preventDefault();
+    console.log('signup');
     const userName = document.querySelector('#signup-username').value;
     const password = document.querySelector('#signup-password').value;
+    console.log(userName);
+    console.log(password);
 
-    const url = endPointUrl + `webresources/users/register?username=${userName}&&password=${password}`;
+    const url = endPointUrl + `users/registration?username=${userName}&&password=${password}`;
 
-    fetch(url, {
-        method: 'POST'
-    })
-        .then(json)
-        .then((data) => {
-            if (data.hasOwnProperty('error')) {
-                alert(data.error);
-            } else {
-                localStorage.setItem("isOk", true);
-                window.location.href = "main_page.html";
-            }
-        }).catch((error) => {
-        console.log('error: ' + error);
-    });
+
+    fetch(url,
+       {method: 'POST'})
+       .then(json)
+       .then((data) =>{
+           console.log(data);
+           if(data.username==='ERROR'){
+               alert('This username has been register')
+           }
+           else{
+               localStorage.setItem('userID',data.id);
+               window.location.href ="main_page.html";
+           }
+
+       });
 });
 
 const json = (res) => {
     return res.json();
+    console.log(res);
 }
 

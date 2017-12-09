@@ -1,83 +1,187 @@
-.main-section{
-    min-height: 100%;
-    overflow: hidden;
+/* --------------------------------------------------
+  Global resets
+-----------------------------------------------------*/
+html {
 }
 
-.nav-bar{
-    background-color: white;
-    padding: 0;
-    order: 0;
+body {
+  font-family: Lato, Arial, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+
+
 }
 
-nav,div,main,section,article{
-    -webkit-box-align: stretch;
-    align-items: stretch;
-    border: 0 solid black;
-    box-sizing: border-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    flex-shrink: 0;
-    margin: 0;
+h1, h2, h3, h4, h5, h6 {
+  font-family: Lato, Arial, sans-serif;
+  font-weight: 200;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  direction: ltr;
+}
+
+p {
+  font-family: Cardo, Georgia, Times, serif;
+  font-weight: normal;
+  margin-bottom: 1em;
+}
+
+a:focus {
+  color: #179b78;
+  outline: none;
+}
+
+img, object, embed {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --------------------------------------------------
+  Nav bar
+-----------------------------------------------------*/
+nav {
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  margin-left: auto;
+  margin-right: 22em;
+}
+
+.home-icon , .profile-icon {
+  margin-right: 2em;
+}
+
+/* --------------------------------------------------
+  Main Section
+-----------------------------------------------------*/
+main {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: #f7f7f7;
+  padding-top: 4em;
+  /*background: yellow;*/
+}
+
+.main-feed {
+  flex:2;
+  display: flex;
+  flex-direction: column;
+  /*background: blue;*/
+  margin-right: 2em;
+}
+
+.main-feed article {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.main-feed .picture {
+  border: 1px solid black;
+  margin-bottom: 4em;
+  width: 40em;
+}
+
+/* --------------------------------------------------
+  Upload card
+-----------------------------------------------------*/
+aside {
+  flex:1;
+  /*background: pink;*/
+  display: flex;
+  flex-direction: column;
+  margin: 0em;
+}
+
+.upload-card {
+  width: 80%;
+  margin-bottom: 2em;
+}
+
+.upload-card h2 {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #666;
+  text-align: left;
+  margin-bottom: 1em;
+}
+
+.upload-card h3 {
+  margin-bottom: 1em;
+}
+
+.text-input{
+    width: 266px;
+    height: 30px;
+    padding-top: 10px;
+}
+
+.SubmitButton{
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
     position: relative;
-    font:inherit;
-    vertical-align: baseline;
+    font-size: 14px;
+    line-height: 20px;
 }
 
-.nav-bar-content{
-    background-color: white;
-    border-bottom: 1px solid transparent;
-    position: fixed;
-    top: 0;
+.Sign-up-btn {
+    background-color: transparent;
+    color: black;
+    overflow: visible;
+    margin: 0;
+    padding: 6px 16px;
+}
+
+/* --------------------------------------------------
+  Medium screen
+-----------------------------------------------------*/
+@media only screen and (max-width: 1045px) {
+  main {
     width: 100%;
-    z-index: 1;
-    height: 77px;
-    -webkit-box-align: center;
+    flex-direction: column;
     align-items: center;
+  }
 
+  nav {
+    justify-content: center;
+  }
+
+  .icon {
+    margin: 0;
+  }
+
+  .main-feed .picture {
+    width: 80%;
+  }
+
+  .main-feed {
+    order: 2;
+    margin: 0;
+  }
+
+  .main-feed article {
+    justify-content: center;
+  }
+
+  aside {
+    order: 1;
+    margin-bottom: 2em;
+    border: 1px solid black;
+    padding: 1em;
+  }
 }
 
-.nav-bar-item{
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-direction: row;
-    height: 77px;
-    -webkit-box-pack: center;
-    max-width: 1010px;
-    padding:26px 40px;
-    width: 100%;
-    align-items: center;
-}
-
-.logo{
-    -webkit-box-flex: 1;
-    flex:1 9999 0%;
-    min-width: 40px;
-}
-
-.icon{
-    align-items: center;
-    -webkit-box-align: center;
-    align-items: center;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-direction: row;
-    flex-wrap: wrap;
-    -webkit-box-flex: 1;
-    flex: 1 0 0%;
-    -webkit-box-pack: end;
-    justify-content: flex-end;
-}
-
-.profile-icon{
-    margin-left: 30px;
-
-}
-
-.main-card{
+/*.main-card{
     -webkit-box-flex: 1;
     flex-grow: 1;
     -webkit-box-ordinal-group: 5;
@@ -199,10 +303,12 @@ h2{
     overflow: visible;
     margin: 0;
     padding: 6px 16px;
-}
+}*/
 
 
-
+/* --------------------------------------------------
+  Modal
+-----------------------------------------------------*/
 
 .modal {
     position: fixed;
@@ -243,7 +349,6 @@ h2{
 
 .modalreview{
     padding: 20px;
-
 }
 .reviewpost img{
     height:300px;

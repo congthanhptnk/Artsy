@@ -40,7 +40,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Path("registration")
-    public User register(@FormParam("username") String userName, @FormParam("password") String password) {
+    public User register(@QueryParam("username") String userName, @QueryParam("password") String password) {
         boolean isOk = true;
         User newUser =null;
         List<User> userList = em.createNamedQuery("User.findAll").getResultList();
@@ -64,7 +64,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Path("login")
-    public User login(@FormParam("username")String userName, @FormParam("password")String password){
+    public User login(@QueryParam("username")String userName, @QueryParam("password")String password){
         boolean isOk=false;
         User myUser = null;
         List<User> userList = em.createNamedQuery("User.findAll").getResultList();
