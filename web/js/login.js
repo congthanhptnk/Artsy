@@ -6,7 +6,7 @@ const signUpButton = document.querySelector('#buttonRegister');
 
 //Login
 loginButton.addEventListener('click', (evt) => {
-    evt.preventDefault();
+    // evt.preventDefault();
     console.log('signin');
     const userName = document.querySelector('#signin-username').value;
     const password = document.querySelector('#signin-password').value;
@@ -48,10 +48,15 @@ signUpButton.addEventListener('click', (evt) => {
        .then(json)
        .then((data) =>{
            console.log(data);
-           if(data.username==='ERROR'){
+           if (data.username==='ERROR'){
                alert('This username has been register')
            }
+
+           else if( data.username.trim()===null){
+               alert('Please enter username')
+           }
            else{
+               alert('Signup successfully')
                localStorage.setItem('userID',data.id);
                window.location.href ="main_page.html";
            }

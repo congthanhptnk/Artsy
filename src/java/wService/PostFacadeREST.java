@@ -5,6 +5,7 @@
  */
 package wService;
 
+import entities.PicLink;
 import entities.Post;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -19,6 +20,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import webcontroller.UpLoadPic;
 
 
 /**
@@ -43,21 +45,25 @@ public class PostFacadeREST extends AbstractFacade<Post> {
             @QueryParam("title") String title, 
             @QueryParam("caption")String caption,
             @QueryParam("picture")String picture, 
-            @HeaderParam("userid")int id) {
+            @PathParam("userid")int id) {
         Post newPost;
-        if(picture.isEmpty() || title.isEmpty()){
-            newPost = em.find(Post.class, 1);
-        }
-        else{
-            newPost = new Post();
-            newPost.setCaption(caption);
-            newPost.setPicture(picture);
-            newPost.setTitle(title);
-            newPost.setId(id);
-            super.create(newPost);
-        }
+        
+        newPost = new Post();
+        newPost.setCaption(caption);
+        newPost.setPicture(picture);
+        newPost.setTitle(title);
+        newPost.setId(id);
+        super.create(newPost);
         return newPost;
         
+    }
+    
+    @POST
+    @Path("newpost")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String upPost(){
+        
+        return "Hello";
     }
 
     @DELETE

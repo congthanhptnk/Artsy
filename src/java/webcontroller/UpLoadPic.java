@@ -5,6 +5,7 @@
  */
 package webcontroller;
 
+import entities.PicLink;
 import entities.Post;
 import entities.User;
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class UpLoadPic extends HttpServlet {
 
     @EJB
     private PostFacadeREST postFacadeREST;
+    private String picLink;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -58,6 +60,12 @@ public class UpLoadPic extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        PicLink newPic = new PicLink();
+        newPic.setUrl("weed");
+        
+        out.println("{\"" + "url" + "\":" + "\"" + newPic.getUrl() + "\"}");
     }
     
 
@@ -74,14 +82,18 @@ public class UpLoadPic extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         request.getPart("upFile").write(request.getPart("upFile").getSubmittedFileName());
-        String pictureLink = "10.114.34.13/storage/" + request.getPart("upFile").getSubmittedFileName();
-        String title = request.getParameter("title");
+        //this.picLink = "10.114.34.13/storage/" + request.getPart("upFile").getSubmittedFileName();
+        this.picLink = request.getPart("upFile").getSubmittedFileName();
+        PrintWriter out = response.getWriter();
+        out.println("{\"" + "picture" + "\":" + "\"" + picLink + "\"}");
+        /*String title = request.getParameter("title");
         String caption = request.getParameter("caption");
         int id = Integer.parseInt(request.getParameter("id"));
-        postFacadeREST.createPost(title, caption, pictureLink, id);
-        
+        postFacadeREST.createPost(title, caption, pictureLink, id);*/
     }
 
+    
+    
     /**
      * Returns a short description of the servlet.
      *

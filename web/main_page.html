@@ -28,14 +28,18 @@
 
   <main class="main-section">
     <section class="main-feed" id="main-feed">
+
+
       <article class="card">
         <div class="picture">
-          <img src="./img/img1.jpg" alt="gmat" data-toggle="modal" data-target="gmat">
+          <img src="http://10.114.34.13/storage/Screen%20Shot%202017-12-09%20at%201.52.42.png" alt="gmat" data-toggle="modal" data-target="gmat">
         </div>
       </article>
+
+
       <article class="card">
         <div class="picture">
-          <img src="img/img1.jpg" alt="gmat">
+          <img src="http://10.114.34.13/storage/Screen%20Shot%202017-12-09%20at%201.52.42.png" alt="gmat">
         </div>
       </article>
     </section>
@@ -48,16 +52,24 @@
           <h3>Share your drawing here</h3>
         </header>
 
-        <form action="/" class=" t1-form" id="upload-form" method="post" enctype="multipart/form-data">
-          <div class="field">
-            <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Title">
-          </div>
-          <div class="field">
-            <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Caption">
-          </div>
-          <input type="file" name="fileup" accept="image/*">
-          <button type="submit" class="SubmitButton Sign-up-btn " value="upload">Upload</button>
+        <form id="formUpload" action="UpLoadPic" enctype="multipart/form-data"  method="post">
+          <input id="inputCaption" class="text-input" type="text" name="caption" placeholder="Write Your Caption">
+          <input id="inputTitle" class="text-input" type="text" name="title" placeholder="Write Your Title">
+          <input id="inputImg" type="file" name="upFile">
+          <input id="buttonUpload" type="submit" value="Upload">
         </form>
+
+
+        <!--<form action="UpLoadPic" class=" t1-form" id="upload-form" method="post" enctype="multipart/form-data">-->
+          <!--<div class="field">-->
+            <!--<input id="inputTitle" type="text" class="text-input" name="title" placeholder="Write Your Title">-->
+          <!--</div>-->
+          <!--<div class="field">-->
+            <!--<input id="inputCaption" type="text" class="text-input" name="caption" placeholder="Write Your Caption">-->
+          <!--</div>-->
+          <!--<input id="inputImg" type="file" name="upFile" accept="image/*">-->
+          <!--<button id="buttonUpload" type="submit" class="SubmitButton Sign-up-btn " value="upload">Upload</button>-->
+        <!--</form>-->
       </section>
       <footer>
         <p>&copy 2017 Artsy</p>
