@@ -7,6 +7,7 @@ package wService;
 
 import entities.PicLink;
 import entities.Post;
+import java.util.Collections;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -89,7 +90,9 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     @Path("{userid}/main")
     @Produces({MediaType.APPLICATION_JSON})
     public List<Post> findAllPost() {
-        return super.findAll();
+        List<Post> posts = super.findAll();
+        Collections.reverse(posts);
+        return posts;
     }
     
     @GET

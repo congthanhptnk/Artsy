@@ -87,17 +87,10 @@ public class UserFacadeREST extends AbstractFacade<User> {
     }
 
     @GET
-    @Path("profile")
+    @Path("{userid}/profile")
     @Produces({MediaType.APPLICATION_JSON})
-    public User findMe(@QueryParam("username") String username) {
-        List<User> allUser = em.createNamedQuery("User.findAll").getResultList();
-        User user = null;
-        for(User aUser: allUser){
-           if(aUser.getUsername().equals(username)){
-               user = aUser;
-           }
-        }
-        return user;
+    public User findMe(@PathParam("userid") int id) {
+        return super.find(id);
     }
     
     @Override

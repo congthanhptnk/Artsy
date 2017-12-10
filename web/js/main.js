@@ -51,6 +51,27 @@ const loadPicture = () => {
 
 loadPicture();
 
+
+//////////////////User view
+const loadUserName = () => {
+
+    const loadUserName = endPointUrl + `webresources/users/${userID}/profile`;
+    fetch(loadUserName, {
+        method: 'GET'
+    })
+        .then(json)
+        .then((data) => {
+            console.log(data);
+            document.querySelector('#username-display').innerHTML=data.username;
+
+        }).catch((error) => {
+        console.log('error: ' + error);
+    });
+
+}
+
+loadUserName();
+
 //////////////////Logout
 logOutButton.addEventListener('click', (evt) => {
     evt.preventDefault();
