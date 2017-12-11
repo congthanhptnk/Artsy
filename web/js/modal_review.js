@@ -124,17 +124,19 @@ const getComment = (pictureID) => {
                         let content = com.comment;
                         const loadUserName = endPointUrl + `webresources/users/${userID}/profile`;
 
+                        const div = document.createElement('div');
+                        div.className = 'comment';
+
+                        document.querySelector('#commentList').appendChild(div)
                          fetch(loadUserName,{
                             method:'GET'
                         }).then(json)
                             .then((data) => {
                                 console.log(data);
                                             let username = data.username;
-                                            listComment +=
+                                            div.innerHTML =
                                                 `
-                                          <div class="comment">\
                                                  <h1><b>${username}</b> ${content}</h1>\
-                                          </div>
                                         `
 
 
@@ -145,7 +147,7 @@ const getComment = (pictureID) => {
 
                     })
                     console.log(listComment);
-                    document.querySelector('#commentList').innerHTML = listComment;
+                    // document.querySelector('#commentList').innerHTML = listComment;
 
                 }
 
