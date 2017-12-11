@@ -77,9 +77,9 @@ const getPictureDetail = (pictureID) => {
                     let username = data.username
                     postDetail =
                         `
-                        <h2>${postTitle}</h2>
-                        <p><b>Author:</b> ${username}<br>
-                        <b>Caption:</b> ${postCaption}</p>
+                        <h2 class ="title">${postTitle}</h2>
+                        <p class="author">by ${username}</p>
+                        <p class="caption">${postCaption}</p>
                         `
 
                     document.querySelector('#reviewpost').innerHTML = postDetail;
@@ -137,7 +137,7 @@ const getComment = (pictureID) => {
                                             let username = data.username;
                                             div.innerHTML =
                                                 `
-                                                 <h1><b>${username}</b> ${content}</h1>\
+                                                 <h1><b>${username}: </b> ${content}</h1>
                                         `
 
 

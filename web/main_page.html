@@ -21,7 +21,7 @@
                     <img src="img/img5.png" style="width: 30px;height: 30px;">
                 </div>
                 <div id="buttonLogOut" class="top-icon">
-                    <img src="img/img5.png" style="width: 30px;height: 30px;" >
+                    <img src="img/img6.png" style="width: 30px;height: 30px;" >
                 </div>  
             </div>
         </nav>
@@ -29,22 +29,8 @@
         <main class="main-section">
             <section class="main-feed" id="main-feed">
 
-
-                <article class="card">
-                    <div class="picture">
-                        <img src="http://10.114.34.13/storage/Screen%20Shot%202017-12-09%20at%201.52.42.png" alt="gmat" data-toggle="modal" data-target="gmat">
-                    </div>
-                </article>
-
-
-                <article class="card">
-                    <div class="picture">
-                        <img src="http://10.114.34.13/storage/Screen%20Shot%202017-12-09%20at%201.52.42.png" alt="gmat">
-                    </div>
-                </article>
             </section>
-
-
+            
             <aside>
                 <section class="upload-card">
                     <header>
@@ -53,23 +39,13 @@
                     </header>
 
                     <form id="formUpload" action="UpLoadPic" enctype="multipart/form-data"  method="post">
-                        <input id="inputCaption" class="text-input" type="text" name="caption" placeholder="Write Your Caption">
-                        <input id="inputTitle" class="text-input" type="text" name="title" placeholder="Write Your Title">
-                        <input id="inputImg" type="file" name="upFile">
-                        <input id="buttonUpload" type="submit" value="Upload">
+                        <textarea id="inputCaption" class="text-input" name="caption" placeholder="Write Your Caption"></textarea>
+                        <textarea id="inputTitle" class="text-input" name="title" placeholder="Write Your Title"></textarea>
+                        <label for="inputImg" class="upBtn">Choose File</label>
+                        <input id="inputImg" type="file" accept="image/*" name="upFile">
+                        <input id="buttonUpload" class="upBtn" type="submit" value="Upload">
                     </form>
 
-
-                    <!--<form action="UpLoadPic" class=" t1-form" id="upload-form" method="post" enctype="multipart/form-data">-->
-                    <!--<div class="field">-->
-                    <!--<input id="inputTitle" type="text" class="text-input" name="title" placeholder="Write Your Title">-->
-                    <!--</div>-->
-                    <!--<div class="field">-->
-                    <!--<input id="inputCaption" type="text" class="text-input" name="caption" placeholder="Write Your Caption">-->
-                    <!--</div>-->
-                    <!--<input id="inputImg" type="file" name="upFile" accept="image/*">-->
-                    <!--<button id="buttonUpload" type="submit" class="SubmitButton Sign-up-btn " value="upload">Upload</button>-->
-                    <!--</form>-->
                 </section>
                 <footer>
                     <p>&copy 2017 Artsy</p>
@@ -125,35 +101,12 @@
 
                         <div class="sharecomment">
                             <div id="commentList" class="listcomment">
-                                <!--<div class="comment">-->
-                                <!--<div class="sideinfo">-->
-                                <!--<h4>Username</h4>-->
-                                <!--</div>-->
-                                <!--<div class="showcomment">-->
-                                <!--<p>Your picture is so good</p>-->
-                                <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="comment">-->
-                                <!--<div class="sideinfo">-->
-                                <!--<h4>abc</h4>-->
-                                <!--</div>-->
-                                <!--<div class="showcomment">-->
-                                <!--<p>Great job man</p>-->
-                                <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="comment">-->
-                                <!--<div class="sideinfo">-->
-                                <!--<h4>zd</h4>-->
-                                <!--</div>-->
-                                <!--<div class="showcomment">-->
-                                <!--<p>Best</p>-->
-                                <!--</div>-->
-                                <!--</div>-->
+                                
                             </div>
                         </div>
 
                         <div id="viewLike" class="reviewpost">
-                            <p id="like-button">Like</p>
+                            <button id="like-button">Like</button>
                             <h2 id="like-display">13</h2>
                         </div>
 

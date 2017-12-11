@@ -130,7 +130,7 @@ aside {
 }
 
 .upload-card {
-  width: 80%;
+  width: 100%;
   margin-bottom: 2em;
 }
 
@@ -148,218 +148,45 @@ aside {
 }
 
 .text-input{
-    width: 266px;
-    height: 30px;
-    padding-top: 10px;
-}
-
-.SubmitButton{
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    position: relative;
-    font-size: 14px;
-    line-height: 20px;
-}
-
-.Sign-up-btn {
-    background-color: transparent;
-    color: black;
-    overflow: visible;
-    margin: 0;
-    padding: 6px 16px;
-}
-
-/* --------------------------------------------------
-  Medium screen
------------------------------------------------------*/
-@media only screen and (max-width: 800px) {
-  main {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .icon {
-    margin: 0;
-  }
-
-  .main-feed .picture {
     width: 80%;
-  }
-
-  .main-feed {
-    order: 2;
-    margin: 0;
-  }
-
-  .main-feed article {
-    justify-content: center;
-  }
-
-  aside {
-    order: 1;
-    margin-bottom: 2em;
-    border: 1px solid black;
-    padding: 1em;
-  }
-
-  modal-window{
-      background-color: #FFFFFF;
-      width: 80%;
-      margin: 10% auto;
-      padding: 20px;
-  }
+    height: 35px;
+    padding: 7px;
+    margin-bottom: 10px;
+}
+#inputTitle{
+    height: 15px;
 }
 
-/*.main-card{
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    -webkit-box-ordinal-group: 5;
-    order: 4;
-    background-color: white;
-    width: 100%;
-    padding-top: 50px;
-}
-
-.main-feed{
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    margin: 0 auto;
-    max-width: 600px;
-    position: relative;
-    width: 100%;
-    padding-top: 60px;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-flow:row nowrap;
-    max-width: 935px;
-}
-
-._havey{
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-}
-
-.card{
-    padding: 0;
-    padding-bottom: 30px
-}
-
-.picture{
-    border: 1px solid black;
-}
-
-.upload-card{
-    display: flex;
-    height: 100vh;
-    margin-bottom: 30px;
-    max-width: 293px;
-    padding: 0;
-    position: absolute;
-    right: 0;
-    top:60px;
-    width: 100%;
-}
-
-.user-box{
-    -webkit-box-align: center;
-    align-items: center;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-direction: row;
-    height: 62px;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-}
-
-.separate{
+.upBtn {
+    background: gray;
     border: none;
-    border-top: 1px solid grey;
-    height: 1px;
-    margin:0 0 12px;
-    padding:0;
-    width: 100%;
-}
-
-hr{
-    display: block;
-    unicode-bidi: isolate;
-    -webkit-margin-before: 0.5em;
-    -webkit-margin-after: 0.5em;
-    -webkit-margin-start: auto;
-    -webkit-margin-end: auto;
-    overflow: hidden;
-}
-
-.upload-box{
-    height: 250px;
-}
-
-.upload-box-fix{
-    padding-top: 0;
-    padding-bottom: 4284px;
-}
-
-.t1-form{
-    margin:12px 12px 6px;
-}
-
-h2{
-    line-height: 22px;
+    color: white;
+    padding: 5px 10px;
     text-align: center;
-}
-
-.text-input{
-    width: 266px;
-    height: 30px;
-    padding-top: 10px;
-}
-
-.SubmitButton{
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    position: relative;
-    font-size: 14px;
-    line-height: 20px;
+    display: inline-block;
 }
 
-.Sign-up-btn{
-    background-color: transparent;
-    color: black;
-    overflow: visible;
-    margin: 0;
-    padding: 6px 16px;
-}*/
+#inputImg{
+   opacity: 0;
+   position: absolute;
+   z-index: -1;
+}
 
+
+body.modal{
+    overflow: hidden;
+    position: fixed;
+}
 
 /* --------------------------------------------------
   Modal
 -----------------------------------------------------*/
 
-body.modal-open {
-    overflow: hidden;
-    position: fixed;
-}
-
-
 .modal {
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*bottom: 0;*/
-    /*right: 0;*/
-    /*display: none;*/
-    /*overflow: auto;*/
-    /*background-color: #000000;*/
-    /*background-color: rgba(0, 0, 0, 0.7);*/
-    /*z-index: 9999;*/
-
-    display: none;
+    display: flex;
     position: fixed;
     z-index: 10;
     padding-top: 2em;
@@ -371,10 +198,11 @@ body.modal-open {
     background-color: rgba(0, 0, 0, 0.8);
 }
 .modal-window {
+    display: flex;
     background-color: #FFFFFF;
-    width: 66%;
-    height: 60%;
-    margin: 8% auto;
+    width: 70%;
+    height: 90%;
+    margin: auto;
     display: flex;
     flex-flow: row wrap;
 }
@@ -384,6 +212,60 @@ body.modal-open {
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
+}
+
+.author{
+    font-style: italic;
+    text-align: right;
+    margin-right: 40px;
+    margin-bottom: 30px;
+}
+
+.title{
+    font-size: 2em;  
+    margin-bottom: 5px;
+}
+
+.caption{
+    margin-bottom: 30px;
+}
+
+#like-button{
+  display: inline-block;
+  padding: 5px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  font-weight: 600;
+  background-color: lightgray;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px #999;
+  margin: 10px auto;
+  float: left;
+}
+
+#like-button:hover {
+    background-color: lightgrey;
+}
+
+#like-button:active {
+  background-color: darkgray;
+  box-shadow: 0 3px #666;
+  transform: translateY(2px);
+}
+
+#viewLike{
+    margin-top: 20px;
+    border-top: 1px solid lightgray;
+}
+
+#like-display{
+    margin: 15px;
+    float: right;
 }
 
 @-webkit-keyframes zoom {
@@ -415,6 +297,7 @@ body.modal-open {
     color: #747474;
     font-weight: bold;
 }
+
 .modal__close:hover {
     color: #000;
 }
@@ -428,12 +311,16 @@ body.modal-open {
 
 .postPic{
     display: flex;
-    flex:5;
+    flex:6;
     align-content: flex-start;
+    width: 100%;
+    object-fit: contain;
 }
 
 .postPic img{
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .modal-interact{
@@ -443,12 +330,11 @@ body.modal-open {
     padding: 1em;
 }
 
+/* --------------------------------------------------
+  Comment Section
+-----------------------------------------------------*/
 .reviewpost{
     order:0;
-}
-
-.sharecomment{
-
 }
 
 .showcomment{
@@ -541,4 +427,51 @@ td,th{
     background-color: transparent;
     color: black;
 
+}
+
+/* --------------------------------------------------
+  Medium screen
+-----------------------------------------------------*/
+@media only screen and (max-width: 960px) {
+  main {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icon {
+    margin: 0;
+  }
+
+  .main-feed .picture {
+    width: 80%;
+  }
+
+  .main-feed {
+    order: 2;
+    margin: 0;
+  }
+
+  .main-feed article {
+    justify-content: center;
+  }
+
+  aside {
+    order: 1;
+    margin-bottom: 2em;
+    border: 1px solid black;
+    padding: 1em;
+  }
+
+  modal-window{
+      background-color: #FFFFFF;
+      width: 80%;
+      margin: 10% auto;
+      padding: 20px;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  
 }

@@ -6,7 +6,7 @@ const signUpButton = document.querySelector('#buttonRegister');
 
 //Login
 loginButton.addEventListener('click', (evt) => {
-    // evt.preventDefault();
+    evt.preventDefault();
     console.log('signin');
     const userName = document.querySelector('#signin-username').value;
     const password = document.querySelector('#signin-password').value;
