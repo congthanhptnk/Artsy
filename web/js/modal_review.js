@@ -127,8 +127,8 @@ const getComment = (pictureID) => {
                         const div = document.createElement('div');
                         div.className = 'comment';
 
-                        document.querySelector('#commentList').appendChild(div)
-                         fetch(loadUserName,{
+                        document.querySelector('#commentList').appendChild(div);
+                        fetch(loadUserName,{
                             method:'GET'
                         }).then(json)
                             .then((data) => {

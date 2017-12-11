@@ -12,11 +12,7 @@ body {
   font-family: Lato, Arial, sans-serif;
   font-weight: 500;
   font-style: normal;
-
-
 }
-
-
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Lato, Arial, sans-serif;
@@ -50,10 +46,10 @@ img, object, embed {
   Nav bar
 -----------------------------------------------------*/
 nav {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid lightgrey;
   display: flex;
   align-items: center;
-  justify-content: space-between;  
+  justify-content: space-between;
 }
 
 .icon {
@@ -69,7 +65,7 @@ nav {
 }
 
 .top-icon:hover{
-    filter: invert(100%);
+    filter: invert(70%);
     cursor: pointer;
 }
 
