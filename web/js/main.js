@@ -4,7 +4,9 @@ const endPointUrl ="http://10.114.34.13:8080/Artsy/"
 const upLoadImgUrl = endPointUrl + 'UpLoadPic';
 
 const logOutButton = document.querySelector('#buttonLogOut');
+const profileButton = document.querySelector('#buttonProfile');
 const uploadButton = document.querySelector('#buttonUpload');
+const homeButton = document.querySelector('#buttonHome');
 const userID = localStorage.getItem('userID');
 
 
@@ -78,6 +80,23 @@ logOutButton.addEventListener('click', (evt) => {
     console.log('log out clicked');
     localStorage.removeItem("userID");
     window.location.href = "index.html";
+
+});
+
+//////////////////Profile Button
+profileButton.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    console.log('profile clicked');
+    window.location.href = "profile.html";
+
+});
+
+
+//////////////////Home Button
+homeButton.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    console.log('home clicked');
+    window.location.href = "main_page.html";
 
 });
 
