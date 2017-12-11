@@ -23,11 +23,11 @@ let pictureID;
 document.addEventListener('click', function (e) {
     e = e || window.event;
     const target = e.target || e.srcElement;
-    document.body.style.overflow='hidden';
 
     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
         if (target.hasAttribute('data-target')) {
             e.preventDefault();
+            document.body.style.overflow='hidden';
             const m_ID = target.getAttribute('data-target');
             pictureID = target.getAttribute('pictureID');
             console.log(m_ID)
@@ -35,6 +35,7 @@ document.addEventListener('click', function (e) {
 
             getPictureDetail(pictureID);
             getComment(pictureID);
+            getLike(pictureID);
         }
     }
 
@@ -118,12 +119,12 @@ const getComment = (pictureID) => {
                         `<p>There are no comments yet. Be the first to comment.</p>`;
                 } else {
                     let listComment = '';
-                    data.forEach((comment) => {
-                        let userID = comment.id;
-                        let content = comment.comment;
+                    data.forEach((com) => {
+                        let userID = com.id;
+                        let content = com.comment;
                         const loadUserName = endPointUrl + `webresources/users/${userID}/profile`;
 
-                        fetch(loadUserName,{
+                         fetch(loadUserName,{
                             method:'GET'
                         }).then(json)
                             .then((data) => {
@@ -131,62 +132,20 @@ const getComment = (pictureID) => {
                                             let username = data.username;
                                             listComment +=
                                                 `
-                                          <div class="comment">
-                                                 <h4><b>${username}</b> ${content}</h4>
+                                          <div class="comment">\
+                                                 <h1><b>${username}</b> ${content}</h1>\
                                           </div>
                                         `
 
-                                document.querySelector('#commentList').innerHTML = listComment;
+
                         })
                             .catch((error) => {
                             console.log('error: ' + error);
                         });
-                        console.log('abs: '+listComment);
-
-
-
-
-
 
                     })
-
-
-
-
-
-
-                    // data.forEach((comment) => {
-                    //     let userID = comment.id;
-                    //     let content = comment.comment;
-                    //
-                    //     const loadUserName = endPointUrl + `webresources/users/${userID}/profile`;
-                    //     let listComment = ''
-                    //     fetch(loadUserName, {
-                    //         method: 'GET'
-                    //     })
-                    //         .then(json)
-                    //         .then((data) => {
-                    //             console.log(data);
-                    //             let username = data.username;
-                    //             listComment +=
-                    //                 `
-                    //           <div class="comment">
-                    //               <div class="sideinfo">
-                    //                  <h4>${username}</h4>
-                    //               </div>
-                    //               <div class="showcomment">
-                    //                   <pre>${content}</pre>
-                    //               </div>
-                    //           </div>
-                    //         `
-                    //         });
-                    //     console.log(listComment);
-                    //     document.querySelector('#commentList').innerHTML = listComment;
-                    //
-                    //
-                    // }).catch((error) => {
-                    //     console.log('error: ' + error);
-                    // });
+                    console.log(listComment);
+                    document.querySelector('#commentList').innerHTML = listComment;
 
                 }
 
@@ -214,6 +173,7 @@ const postComment  = (pictureID) => {
         .then(json)
         .then((data) => {
                 //reload comment list
+                document.querySelector('#commentList').innerHTML ='';
                 getComment(pictureID);
                 document.querySelector('#inputComment').value = '';
 
@@ -221,3 +181,44 @@ const postComment  = (pictureID) => {
         console.log('error: ' + error);
     });
 }
+
+//////////////////Get Like Detail
+const getLike = (pictureID) => {
+
+    const getLikeUrl = endPointUrl + `webresources/likes/${userID}/${pictureID}`;
+    fetch(getLikeUrl, {
+        method: 'GET'
+    })
+        .then(json)
+        .then((data) => {
+            console.log(data);
+            document.querySelector('#like-display').innerHTML=data;
+
+        }).catch((error) => {
+        console.log('error: ' + error);
+    });
+
+}
+
+
+
+//////////////////POST  Like
+
+const postLike  = (pictureID) => {
+    const postLikeURL = endPointUrl + `webresources/likes/${userID}/${pictureID}`;
+    fetch(postLikeURL, {
+        method: 'POST',
+    }).then(json).then((data) => {
+            //reload rating list
+            getLike(pictureID);
+    }).catch((error) => {
+        console.log('error: ' + error);
+    });
+}
+
+//////////////////POST  Like Button
+const buttonLike = document.querySelector("#like-button");
+buttonLike.addEventListener("click", (evt) => {
+    evt.preventDefault();
+    postLike(pictureID);
+})
