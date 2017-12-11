@@ -119,6 +119,7 @@ const getComment = (pictureID) => {
                         `<p>There are no comments yet. Be the first to comment.</p>`;
                 } else {
                     let listComment = '';
+                    data.reverse();
                     data.forEach((com) => {
                         let userID = com.id;
                         let content = com.comment;
