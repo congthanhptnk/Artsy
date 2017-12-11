@@ -96,7 +96,7 @@
               <input type="file" name="fileup" accept="image/*">
               <div class="field">
                 <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Title">
-              </div>
+              </div>'
               <div class="field">
                 <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Caption">
               </div>
@@ -118,12 +118,10 @@
   <div class="modalreview">
 
     <div class="modal" id="gmat">
-      <div class="modal-window">
+      <div id="modal-window" class="modal-window">
 
-
-        <div class="reviewpost">
+        <div id="reviewpost" class="reviewpost">
           <img src="./img/img1.jpg" alt="gmat" style="flow: center">
-          <img id="likebtn" src="img/like_icon.png" style="width: 30px;height: 30px;">
           <p>Caption: <br>by Dat Viri <br> 123 </p>
         </div>
 
@@ -133,12 +131,12 @@
             <tbody>
               <tr>
                 <td class="flex-table-primary">
-                  <div class="showcomment flex-table-form">
-                    <input type="text" name="newcomment" placeholder=" ">
+                  <div  class="showcomment flex-table-form">
+                    <input id="inputComment" type="text" name="newcomment" placeholder=" ">
                   </div>
                 </td>
                 <td class="flex-table-secondary">
-                  <button type="submit" class="SubmitButton flex-table-btn">Send</button>
+                  <button id="buttonComment" type="submit" class="SubmitButton flex-table-btn">Send</button>
                 </td>
               </tr>
             </tbody>
@@ -146,7 +144,7 @@
 
         </div>
         <div class="sharecomment">
-          <div class="listcomment">
+          <div id="commentList" class="listcomment">
             <div class="comment">
               <div class="sideinfo">
                 <h4>Username</h4>

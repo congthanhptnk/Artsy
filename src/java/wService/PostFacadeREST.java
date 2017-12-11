@@ -98,9 +98,16 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     @GET
     @Path("{userid}/mypost")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<Post> findMyPost(@HeaderParam("userid")int id) {
-        List<Post> myPost = em.createNamedQuery("Post.findById").setParameter("ID", id).getResultList();
+    public List<Post> findMyPost(@PathParam("userid")int id) {
+        List<Post> myPost = em.createNamedQuery("Post.findById").setParameter("id", id).getResultList();
         return myPost;
+    }
+    
+    @GET
+    @Path("{postid}/post")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Post findPost(@PathParam("postid")int pid) {       
+        return super.find(pid);
     }
 
     @Override

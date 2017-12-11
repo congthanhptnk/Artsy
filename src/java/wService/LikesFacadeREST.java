@@ -40,7 +40,7 @@ public class LikesFacadeREST extends AbstractFacade<Likes> {
     @POST
     @Path("{userid}/{postid}")
     @Consumes({MediaType.APPLICATION_JSON})
-    public boolean addLike(@PathParam("postid")int pid, @HeaderParam("userid")int id) {
+    public boolean addLike(@PathParam("postid")int pid, @PathParam("userid")int id) {
         List<Likes> checkLike = em.createNamedQuery("Likes.findAll").getResultList();
         boolean isOk = true;
         for(Likes aLike: checkLike){

@@ -35,7 +35,7 @@ const loadPicture = () => {
                     `
                     <article class="card">
                         <div class="picture">
-                            <img src="http://10.114.34.13/storage/${pictureUrl}" alt="${post.title}" data-toggle="modal" data-target="gmat">
+                            <img pictureID="${post.pid}" src="http://10.114.34.13/storage/${pictureUrl}" alt="${post.title}" data-toggle="modal" data-target="gmat" >
                         </div>
                     </article>
                 

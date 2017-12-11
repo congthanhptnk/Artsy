@@ -43,8 +43,8 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
     @Produces({MediaType.APPLICATION_JSON})
     public boolean createComment(
             @PathParam("postid")int pid, 
-            @HeaderParam("userid")int id, 
-            @FormParam("comment")String comment) {
+            @PathParam("userid")int id, 
+            @QueryParam("comment")String comment) {
         boolean isOk =true;
         if(comment.isEmpty()){
             isOk = false;
@@ -77,7 +77,7 @@ public class CommentFacadeREST extends AbstractFacade<Comment> {
     @Path("{userid}/{postid}")
     @Produces({MediaType.APPLICATION_JSON})
     public List<Comment> findPicComment(@PathParam("postid")int pid) {
-        List<Comment> comments = em.createNamedQuery("Comment.findCommentbyPid").setParameter("PID", pid).getResultList();
+        List<Comment> comments = em.createNamedQuery("Comment.findByPid").setParameter("pid", pid).getResultList();
         return comments;
     }
 
