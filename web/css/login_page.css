@@ -8,9 +8,6 @@ div{
     margin: -200px 0 0 -418px;
     top: 50%;
     width: 838px;
-}
-
-.front-card{
     left: 50%;
     position: absolute;
 }
@@ -28,12 +25,13 @@ div{
 .front-login{
     float: right;
     display: block;
+    
 }
 
 .front-signin{
     margin-bottom: 11px;
     width: 300px;
-    border: 1px solid black;
+    border: 1px solid;
 }
 
 
@@ -45,7 +43,7 @@ div{
 
 /* front login css */
 .t1-form{
-    margin:12px 12px 6px;
+    margin:5% 5% 5% 5%;
 }
 
 .username{
