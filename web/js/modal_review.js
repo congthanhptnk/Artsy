@@ -22,13 +22,13 @@ let pictureID;
 
 document.addEventListener('click', function (e) {
     e = e || window.event;
-    var target = e.target || e.srcElement;
-
+    const target = e.target || e.srcElement;
+    document.body.style.overflow='hidden';
 
     if (target.hasAttribute('data-toggle') && target.getAttribute('data-toggle') == 'modal') {
         if (target.hasAttribute('data-target')) {
             e.preventDefault();
-            var m_ID = target.getAttribute('data-target');
+            const m_ID = target.getAttribute('data-target');
             pictureID = target.getAttribute('pictureID');
             console.log(m_ID)
             document.getElementById(m_ID).classList.add('open');
@@ -40,8 +40,9 @@ document.addEventListener('click', function (e) {
 
     // Close modal window with 'data-dismiss' attribute or when the backdrop is clicked
     if ((target.hasAttribute('data-dismiss') && target.getAttribute('data-dismiss') == 'modal') || target.classList.contains('modal')) {
-        var modal = document.querySelector('[class="modal open"]');
+        const modal = document.querySelector('[class="modal open"]');
         modal.classList.remove('open');
+        document.body.style.overflow='auto';
     }
 }, false);
 
@@ -56,7 +57,9 @@ const getPictureDetail = (pictureID) => {
         .then((data) => {
             console.log(data);
             let postDetail = '';
+            let pictureDetail = '';
             document.querySelector('#reviewpost').innerHTML = postDetail;
+            document.querySelector('#postPic').innerHTML = pictureDetail;
 
             const userID = data.id;
             const postCaption = data.caption;
@@ -73,21 +76,19 @@ const getPictureDetail = (pictureID) => {
                     let username = data.username
                     postDetail =
                         `
-                    <div >
-                        <img src="http://10.114.34.13/storage/${postImgUrl}" alt="${postTitle}" >
-                    </div>
-                    
-                    <div >
-                        <img id="likebtn" src="img/like_icon.png" style="width: 30px;height: 30px;">
                         <h2>${postTitle}</h2>
                         <p><b>Author:</b> ${username}<br>
                         <b>Caption:</b> ${postCaption}</p>
-                        <b>Rate:</b> ${postCaption}</p>
-                    </div>   
-                        
                         `
 
                     document.querySelector('#reviewpost').innerHTML = postDetail;
+
+                    pictureDetail =
+                        `
+                        <img src="http://10.114.34.13/storage/${postImgUrl}" alt="${postTitle}" >
+                        `
+
+                    document.querySelector('#postPic').innerHTML = pictureDetail;
 
 
                 }).catch((error) => {
@@ -131,12 +132,7 @@ const getComment = (pictureID) => {
                                             listComment +=
                                                 `
                                           <div class="comment">
-                                              <div class="sideinfo">
-                                                 <h4>${username}</h4>
-                                              </div>
-                                              <div class="showcomment">
-                                                  <pre>${content}</pre>
-                                              </div>
+                                                 <h4><b>${username}</b> ${content}</h4>
                                           </div>
                                         `
 

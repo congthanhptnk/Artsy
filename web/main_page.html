@@ -76,36 +76,6 @@
       </footer>
     </aside>
 
-    <!-- <section class="upload-card">
-      <div style="position: fixed">
-        <div class="user-box t1-form">
-          <div class="user-name">
-            <div class="nick-name">
-              <a>Dat Viri</a>
-            </div>
-            <div class="true-name">
-              <a>Truong Huu Dat</a>
-            </div>
-          </div>
-        </div>
-        <hr style="margin:12px 12px 6px;">
-        <div class="upload-box">
-          <div class="_havey upload-box-fix">
-            <h2><strong>Share your drawing here</strong></h2>
-            <form action="/" class=" t1-form" id="upload-form" method="post" enctype="multipart/form-data">
-              <input type="file" name="fileup" accept="image/*">
-              <div class="field">
-                <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Title">
-              </div>'
-              <div class="field">
-                <input type="text" class="text-input" name="user[user_caption]" placeholder="Write Your Caption">
-              </div>
-              <button type="submit" class="SubmitButton Sign-up-btn " value="upload">Upload</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section> -->
   </main>
 
 
@@ -118,21 +88,30 @@
   <div class="modalreview">
 
     <div class="modal" id="gmat">
+
       <div id="modal-window" class="modal-window">
 
-        <div id="reviewpost" class="reviewpost">
+        <div id="postPic" class="postPic">
           <img src="./img/img1.jpg" alt="gmat" style="flow: center">
+        </div>
+
+
+
+        <div id="modal-interact" class="modal-interact" >
+
+
+        <div id="reviewpost" class="reviewpost">
           <p>Caption: <br>by Dat Viri <br> 123 </p>
         </div>
 
         <div class="writecomment">
-          <h2>Add a Comment</h2>
+          <h2></h2>
           <table class="flex-table">
             <tbody>
               <tr>
                 <td class="flex-table-primary">
                   <div  class="showcomment flex-table-form">
-                    <input id="inputComment" type="text" name="newcomment" placeholder=" ">
+                    <input id="inputComment" type="text" name="newcomment" placeholder=" Add a comment ">
                   </div>
                 </td>
                 <td class="flex-table-secondary">
@@ -141,8 +120,9 @@
               </tr>
             </tbody>
           </table>
-
         </div>
+
+
         <div class="sharecomment">
           <div id="commentList" class="listcomment">
             <div class="comment">
@@ -171,6 +151,9 @@
             </div>
           </div>
         </div>
+
+        </div>
+
         <button class="modal__close" data-dismiss="modal">&#10005;</button>
       </div>
     </div>
