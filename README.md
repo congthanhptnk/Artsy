@@ -22,4 +22,4 @@
           - Contain navigation bar to logout, go to profile page. 
           - Posts: a modal view of the post. Users get to comment, like and view the post.
     - Profile:
-          - Contain all the posts the user posted.  
+          - Contain all the posts the user posted.
