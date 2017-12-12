@@ -7,7 +7,7 @@
 3. Work division:
     - First few weeks: 
         - Thanh Tran: Back-end/Server/Database
-        -Dat Truong: frontend/UI/Javascript
+        - Dat Truong: frontend/UI/Javascript
     - Last week: we exchange work to familiarize ourselves with what we didn't do to ensure an overall understanding. 
     
 4. User group:
@@ -17,9 +17,9 @@
 5. Functionality:
     - Login page: Basic and login and sign-up.
     - Main page: 
-          -Newsfeed: Lists all the posts from the lastest to the oldest.
-          -Upload tab: users can upload their picture, set up the title and caption. 
-          -Contain navigation bar to logout, go to profile page. 
-          -Posts: a modal view of the post. Users get to comment, like and view the post.
+          - Newsfeed: Lists all the posts from the lastest to the oldest.
+          - Upload tab: users can upload their picture, set up the title and caption. 
+          - Contain navigation bar to logout, go to profile page. 
+          - Posts: a modal view of the post. Users get to comment, like and view the post.
     - Profile:
-          -Contain all the posts the user posted.  
+          - Contain all the posts the user posted.  
