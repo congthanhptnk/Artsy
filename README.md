@@ -6,7 +6,7 @@
 
 3. Work division:
     - First few weeks: 
-        -Thanh Tran: Back-end/Server/Database
+        - Thanh Tran: Back-end/Server/Database
         -Dat Truong: frontend/UI/Javascript
     - Last week: we exchange work to familiarize ourselves with what we didn't do to ensure an overall understanding. 
     
