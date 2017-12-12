@@ -28,24 +28,29 @@ const loadPicture = () => {
         .then((data) => {
             // console.log(data);
             document.querySelector('#main-feed').innerHTML='';
-            let postPicture = '';
-            data.forEach((post, index) => {
-                console.log(post);
-                console.log(post.picture);
-                let pictureUrl=post.picture;
-                postPicture +=
-                    `
+            if (data.length === 0) {
+                document.querySelector('#main-feed').innerHTML =
+                    `<h1>There are no posts yet. Select picture and Upload it at the right tab.</h1>`;
+            }
+            else {
+                let postPicture = '';
+                data.forEach((post, index) => {
+                    console.log(post);
+                    console.log(post.picture);
+                    let pictureUrl = post.picture;
+                    postPicture +=
+                        `
                     <article class="card">
                         <div class="picture">
                             <img pictureID="${post.pid}" src="http://10.114.34.13/storage/${pictureUrl}" alt="${post.title}" data-toggle="modal" data-target="gmat" >
                         </div>
                     </article>
-                
-                `
-            })
-            document.querySelector('#main-feed').innerHTML=postPicture;
-
-        }).catch((error) => {
+                    `
+                })
+                document.querySelector('#main-feed').innerHTML = postPicture;
+            }
+        })
+        .catch((error) => {
         console.log('error: ' + error);
     });
 

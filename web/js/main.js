@@ -40,12 +40,11 @@ const loadPicture = () => {
                             <img pictureID="${post.pid}" src="http://10.114.34.13/storage/${pictureUrl}" alt="${post.title}" data-toggle="modal" data-target="gmat" >
                         </div>
                     </article>
-                
                 `
             })
             document.querySelector('#main-feed').innerHTML=postPicture;
-
-        }).catch((error) => {
+        })
+        .catch((error) => {
         console.log('error: ' + error);
     });
 

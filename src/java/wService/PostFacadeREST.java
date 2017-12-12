@@ -100,6 +100,7 @@ public class PostFacadeREST extends AbstractFacade<Post> {
     @Produces({MediaType.APPLICATION_JSON})
     public List<Post> findMyPost(@PathParam("userid")int id) {
         List<Post> myPost = em.createNamedQuery("Post.findById").setParameter("id", id).getResultList();
+        Collections.reverse(myPost);
         return myPost;
     }
     
