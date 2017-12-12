@@ -7,7 +7,7 @@ const signUpButton = document.querySelector('#buttonRegister');
 //Login
 loginButton.addEventListener('click', (evt) => {
     evt.preventDefault();
-    console.log('signin');
+    //console.log('signin');
     const userName = document.querySelector('#signin-username').value;
     const password = document.querySelector('#signin-password').value;
     console.log(userName);
@@ -34,7 +34,7 @@ loginButton.addEventListener('click', (evt) => {
 //Register
 signUpButton.addEventListener('click', (evt) => {
     evt.preventDefault();
-    console.log('signup');
+    //console.log('signup');
     const userName = document.querySelector('#signup-username').value;
     const password = document.querySelector('#signup-password').value;
     console.log(userName);
@@ -66,6 +66,6 @@ signUpButton.addEventListener('click', (evt) => {
 
 const json = (res) => {
     return res.json();
-    console.log(res);
+    //console.log(res);
 }
 
